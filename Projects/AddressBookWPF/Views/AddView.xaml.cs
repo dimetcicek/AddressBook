@@ -1,10 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace AddressBookWPF.Views
+﻿namespace AddressBookWPF.Views
 {
-    /// <summary>
-    /// Interaction logic for AddView.xaml
-    /// </summary>
+    using System.Windows.Controls;
+
     public partial class AddView : UserControl
     {
         public AddView()

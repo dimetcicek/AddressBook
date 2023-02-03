@@ -1,7 +1,8 @@
-﻿namespace AddressBookWPF.Models
+﻿namespace AddressBookWPF.ViewModels
 {
     using System;
     using System.ComponentModel;
+    using AddressBookWPF.Models;
 
     public class ViewModelBase : INotifyPropertyChanged
     {
@@ -9,13 +10,13 @@
 
         public event EventHandler<NavigationEventArgs> NavigationRequest;
 
-        public virtual void OnNavigatedTo(Contact contact)
-        {
-        }
-
-        protected void NavigateTo(Type viewModelType, Contact contact)
+        public void NavigateTo(Type viewModelType, Contact contact)
         {
             NavigationRequest?.Invoke(this, new NavigationEventArgs(viewModelType, contact));
+        }
+
+        public virtual void OnNavigatedTo(Contact contact)
+        {
         }
 
         protected void RaisePropertyChanged(string propertyName)

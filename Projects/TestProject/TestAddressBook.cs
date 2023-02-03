@@ -1,14 +1,14 @@
-﻿using NUnit.Framework;
-
-namespace TestProject
+﻿namespace TestProject
 {
+    using NUnit.Framework;
+
     [TestFixture]
     public class TestAddressBook
     {
         private AddressBook _addressBook;
 
         [SetUp]
-        public void Setup ()
+        public void Setup()
         {
             _addressBook = new AddressBook();
         }
@@ -18,6 +18,7 @@ namespace TestProject
         {
             var contact = new Contact("TestName", "12345", "TestAddress", "TestMail");
             Assert.AreEqual(null, _addressBook.FindContact(contact.Name));
+            
             _addressBook.AddContact(contact);
             Assert.AreEqual(contact, _addressBook.FindContact(contact.Name));
         }

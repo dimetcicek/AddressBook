@@ -1,13 +1,9 @@
-﻿using System.Windows;
-
-namespace AddressBookWPF
+﻿namespace AddressBookWPF
 {
+    using System.Windows;
     using AddressBookWPF.ViewModels;
     using AddressBookWPF.Views;
 
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private AddressBook _addressBook;
@@ -24,7 +20,6 @@ namespace AddressBookWPF
         private MainWindow _mainWindow;
         private MainWindowViewModel _mainWindowViewModel;
 
-        /// <inheritdoc />
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

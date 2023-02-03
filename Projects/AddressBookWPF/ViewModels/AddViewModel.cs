@@ -27,6 +27,7 @@
         public string Name
         {
             get => _name;
+
             set
             {
                 _name = value;

@@ -76,6 +76,7 @@
         public override void OnNavigatedTo(Contact contact)
         {
             _addressBook.LoadContacts();
+
             var contacts = _addressBook.GetAllContacts();
             Contacts = new ObservableCollection<Contact>(contacts);
 
@@ -92,12 +93,13 @@
                 return;
             }
 
-            var result = MessageBox.Show(Application.Current.MainWindow, $"Är du säker på att du vill ta bort: {SelectedContact.Name}?", "Bekräfta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var result = MessageBox.Show(Application.Current.MainWindow, $"Are you sure you wish to remove: {SelectedContact.Name}?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {
                 _addressBook.RemoveContact(SelectedContact);
                 Contacts.Remove(SelectedContact);
+
                 _addressBook.SaveContacts();
             }
         }

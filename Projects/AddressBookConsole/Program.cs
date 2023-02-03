@@ -1,6 +1,6 @@
 ﻿public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         AddressBook addressBook = new AddressBook();
         addressBook.LoadContacts();
@@ -47,13 +47,17 @@
     private static void CreateContact(AddressBook addressBook)
     {
         Console.WriteLine("Enter name:");
-        string name = Console.ReadLine();
+        var name = Console.ReadLine();
+
         Console.WriteLine("Enter phone:");
-        string phone = Console.ReadLine();
+        var phone = Console.ReadLine();
+
         Console.WriteLine("Enter address:");
-        string address = Console.ReadLine();
+        var address = Console.ReadLine();
+
         Console.WriteLine("Enter email:");
-        string email = Console.ReadLine();
+        var email = Console.ReadLine();
+
         addressBook.AddContact(new Contact(name, phone, address, email));
         Console.WriteLine("New contact added. ");
     }
@@ -62,7 +66,8 @@
     {
         Console.Write("Enter the name of the contact you wish to remove: ");
         Console.WriteLine();
-        string contactName = Console.ReadLine();
+
+        var contactName = Console.ReadLine();
         Contact contact = addressBook.FindContact(contactName);
 
         if (contact != null)
@@ -70,17 +75,19 @@
             while (true)
             {
                 Console.Write("Are you sure you want to delete " + contactName + "? (y/n): ");
-                string input = Console.ReadLine();
+                var input = Console.ReadLine();
 
                 if (string.Equals(input, "y", StringComparison.OrdinalIgnoreCase))
                 {
                     addressBook.RemoveContact(contact);
                     Console.WriteLine("Contact removed.");
+
                     break;
                 }
                 else if (string.Equals(input, "n", StringComparison.OrdinalIgnoreCase))
                 {
                     PressAnyKey();
+
                     break;
                 }
                 else
@@ -99,7 +106,9 @@
     {
         Console.WriteLine("Enter name:");
         var name = Console.ReadLine();
-        Contact specificContact = addressBook.FindContact(name);
+
+        var specificContact = addressBook.FindContact(name);
+
         Console.WriteLine();
         Console.WriteLine("Name: " + specificContact.Name);
         Console.WriteLine("Phone: " + specificContact.Phone);
@@ -111,13 +120,14 @@
 
     private static void ShowAllContacts(AddressBook addressBook)
     {
-        List<Contact> allContacts = addressBook.GetAllContacts();
-        foreach (Contact c in allContacts)
+        var allContacts = addressBook.GetAllContacts();
+
+        foreach (Contact contact in allContacts)
         {
-            Console.WriteLine("Name: " + c.Name);
-            Console.WriteLine("Phone: " + c.Phone);
-            Console.WriteLine("Address: " + c.Address);
-            Console.WriteLine("Email: " + c.Email);
+            Console.WriteLine("Name: " + contact.Name);
+            Console.WriteLine("Phone: " + contact.Phone);
+            Console.WriteLine("Address: " + contact.Address);
+            Console.WriteLine("Email: " + contact.Email);
             Console.WriteLine();
         }
 

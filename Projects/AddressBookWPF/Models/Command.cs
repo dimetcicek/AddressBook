@@ -12,16 +12,13 @@
             _action = action;
         }
 
-        /// <inheritdoc />
         public event EventHandler? CanExecuteChanged;
 
-        /// <inheritdoc />
         public bool CanExecute(object? parameter)
         {
             return true;
         }
 
-        /// <inheritdoc />
         public void Execute(object? parameter)
         {
             _action?.Invoke();
