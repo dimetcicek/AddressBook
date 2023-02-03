@@ -12,5 +12,8 @@
     public string Address { get; set; }
     public string Email { get; set; }
 
-    
+    public Contact Clone()
+    {
+        return new Contact(Name, Phone, Address, Email);
+    }
 }

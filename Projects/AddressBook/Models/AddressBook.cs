@@ -24,23 +24,34 @@ public class AddressBook
         return contacts.Find(contact => string.Equals(contact.Name, name, StringComparison.OrdinalIgnoreCase));
     }
 
-    public List<Contact> ShowAllContacts()
+    public List<Contact> GetAllContacts()
     {
         return contacts;
     }
 
     public void SaveContacts()
     {
-        string json = JsonConvert.SerializeObject(contacts);
-        File.WriteAllText("contacts.json", json);
+        var contactsPath = GetContactsPath();
+        var json = JsonConvert.SerializeObject(contacts);
+        
+        File.WriteAllText(contactsPath, json);
     }
 
     public void LoadContacts()
     {
-        if (File.Exists("contacts.json"))
+        var contactsPath = GetContactsPath();
+
+        if (File.Exists(contactsPath))
         {
-            string json = File.ReadAllText("contacts.json");
+            var json = File.ReadAllText(contactsPath);
             contacts = JsonConvert.DeserializeObject<List<Contact>>(json);
         }
+    }
+
+    private string GetContactsPath()
+    {
+        var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+        return Path.Combine(desktopPath, "contacts.json");
     }
 }

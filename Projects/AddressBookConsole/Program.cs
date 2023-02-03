@@ -111,7 +111,7 @@
 
     private static void ShowAllContacts(AddressBook addressBook)
     {
-        List<Contact> allContacts = addressBook.ShowAllContacts();
+        List<Contact> allContacts = addressBook.GetAllContacts();
         foreach (Contact c in allContacts)
         {
             Console.WriteLine("Name: " + c.Name);
